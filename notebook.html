@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notebook Specifications</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 80%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .specification {
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        select, input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        /* Button Styles */
+        .button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: #f78565;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background-color: #e67354;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Select Notebook Specifications</h1>
+
+        <!-- Brand Selection -->
+        <div class="specification">
+            <label for="brand">Brand:</label>
+            <select id="brand">
+                <option value="Brand A">Brand A</option>
+                <option value="Brand B">Brand B</option>
+                <option value="Brand C">Brand C</option>
+                <option value="Brand D">Brand D</option>
+            </select>
+        </div>
+
+        <!-- Color Selection -->
+        <div class="specification">
+            <label for="color">Color:</label>
+            <select id="color">
+                <option value="Blue">Blue</option>
+                <option value="Red">Red</option>
+                <option value="Green">Green</option>
+                <option value="Black">Black</option>
+                <option value="Yellow">Yellow</option>
+            </select>
+        </div>
+
+        <!-- Size Selection -->
+        <div class="specification">
+            <label for="size">Size:</label>
+            <select id="size">
+                <option value="A4">A4</option>
+                <option value="A5">A5</option>
+                <option value="B5">B5</option>
+                <option value="Letter">Letter</option>
+            </select>
+        </div>
+
+        <!-- Number of Pages Selection -->
+        <div class="specification">
+            <label for="pages">Number of Pages:</label>
+            <input type="number" id="pages" min="50" max="500" placeholder="Enter number of pages" required>
+        </div>
+
+        <!-- Add to Cart Button -->
+        <button class="button" onclick="addNotebookToCart()">Add to Cart</button>
+    </div>
+
+    <script>
+        function addNotebookToCart() {
+            const brand = document.getElementById('brand').value;
+            const color = document.getElementById('color').value;
+            const size = document.getElementById('size').value;
+            const pages = document.getElementById('pages').value;
+
+            alert(`Notebook Added to Cart:\nBrand: ${brand}\nColor: ${color}\nSize: ${size}\nPages: ${pages}`);
+        }
+    </script>
+
+</body>
+</html>

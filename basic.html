@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Loot Box - Basic Selection</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+
+        /* Balance Display */
+        .balance-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .balance {
+            font-size: 1.5em;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Place Order Icon */
+        .place-order-icon {
+            padding: 10px;
+            font-size: 1em;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .place-order-icon:hover {
+            background-color: #45a049;
+        }
+
+        /* Items Container */
+        .items-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 900px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        /* Item List */
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 1.2em;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Button Styles */
+        .item button {
+            padding: 8px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: #f78565;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .item button:hover {
+            background-color: #e67354;
+        }
+
+        /* Place Order Button */
+        .place-order-button {
+            margin-top: 30px;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .place-order-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Balance and Place Order Icon -->
+    <div class="balance-container">
+        <div class="balance">Balance: $7.14</div>
+        <button class="place-order-icon" onclick="placeOrder()">✓</button>
+    </div>
+
+    <!-- Items Container -->
+    <div class="items-container">
+        <h1>Select Items</h1>
+
+        <!-- Item List -->
+        <div class="item">
+            <span>Stationery Set</span>
+            <button onclick="selectItem(10)">Add - $10</button>
+        </div>
+        <div class="item">
+            <span>Study Snacks</span>
+            <button onclick="selectItem(8)">Add - $8</button>
+        </div>
+        <div class="item">
+            <span>Stress Relief Kit</span>
+            <button onclick="selectItem(15)">Add - $15</button>
+        </div>
+        <div class="item">
+            <span>Planner</span>
+            <button onclick="selectItem(12)">Add - $12</button>
+        </div>
+        <div class="item">
+            <span>Financial Tips Booklet</span>
+            <button onclick="selectItem(5)">Add - $5</button>
+        </div>
+
+        <!-- Place Order Button at Bottom -->
+        <button class="place-order-button" onclick="placeOrder()">Place Order</button>
+    </div>
+
+    <script>
+        let balance = 50;
+
+        function selectItem(cost) {
+            if (balance >= cost) {
+                balance -= cost;
+                document.querySelector('.balance').textContent = 'Balance: $' + balance.toFixed(2);
+            } else {
+                alert("Insufficient balance to add this item.");
+            }
+        }
+
+        function placeOrder() {
+            alert("Your order has been placed successfully!");
+        }
+    </script>
+
+</body>
+</html>

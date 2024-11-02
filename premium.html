@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Item Selection</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 80%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+        }
+
+        /* Balance Display Styles */
+        .balance-display {
+            position: absolute;
+            top: 20px;
+            right: 120px;
+            background-color: #f78565;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        /* Place Order Button */
+        .place-order {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            border: none;
+        }
+
+        /* Search Box Styles */
+        .search-box {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        /* Slider Styles */
+        .slider {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .item {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            width: 180px;
+            text-align: center;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        /* Button Styles */
+        .button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: #f78565;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #e67354;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Balance Display -->
+        <div class="balance-display" id="balanceDisplay">Balance: $10.7</div>
+
+        <!-- Place Order Button -->
+        <button class="place-order" onclick="placeOrder()">Place Order</button>
+
+        <h1>Premium Item Selection</h1>
+
+        <!-- Search Box -->
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search for an item..." onkeyup="filterItems()">
+        </div>
+
+        <!-- Item Slider -->
+        <div class="slider" id="itemSlider">
+            <div class="item" data-item="Notebook" onclick="redirectToNotebook()">
+                <h2>Notebook</h2>
+                <p>Color: Blue</p>
+                <p>Specifications: 100 pages, ruled</p>
+            </div>
+            <div class="item" data-item="Pen">
+                <h2>Pen</h2>
+                <p>Color: Black</p>
+                <p>Specifications: Ballpoint, medium tip</p>
+            </div>
+            <div class="item" data-item="Highlighter">
+                <h2>Highlighter</h2>
+                <p>Color: Yellow</p>
+                <p>Specifications: Chisel tip</p>
+            </div>
+            <div class="item" data-item="Sticky Notes">
+                <h2>Sticky Notes</h2>
+                <p>Color: Assorted</p>
+                <p>Specifications: 3x3 inches, 100 sheets</p>
+            </div>
+            <div class="item" data-item="Stress Ball">
+                <h2>Stress Ball</h2>
+                <p>Color: Red</p>
+                <p>Specifications: 5 inches diameter</p>
+            </div>
+            <div class="item" data-item="Protein Bar">
+                <h2>Protein Bar</h2>
+                <p>Flavor: Chocolate</p>
+                <p>Specifications: 20g protein, gluten-free</p>
+            </div>
+            <div class="item" data-item="Fruit Snacks">
+                <h2>Fruit Snacks</h2>
+                <p>Flavor: Mixed Berry</p>
+                <p>Specifications: 100% fruit, no artificial colors</p>
+            </div>
+            <div class="item" data-item="Coffee Mug">
+                <h2>Coffee Mug</h2>
+                <p>Color: White</p>
+                <p>Specifications: 12 oz, ceramic</p>
+            </div>
+            <div class="item" data-item="Tea Sampler">
+                <h2>Tea Sampler</h2>
+                <p>Flavors: Green, Black, Herbal</p>
+                <p>Specifications: 10 bags of each</p>
+            </div>
+            <div class="item" data-item="Fidget Spinner">
+                <h2>Fidget Spinner</h2>
+                <p>Color: Multi-color</p>
+                <p>Specifications: Plastic, 3 minutes spin</p>
+            </div>
+        </div>
+
+        <!-- Add to Cart Button -->
+        <button class="button" onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <script>
+        // Filter items based on search input
+        function filterItems() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const items = document.querySelectorAll('.item');
+
+            items.forEach(item => {
+                const itemName = item.getAttribute('data-item').toLowerCase();
+                if (itemName.includes(input)) {
+                    item.style.display = "inline-block";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        }
+
+        // Function to simulate adding an item to the cart
+        function addToCart() {
+            alert('Selected items have been added to your cart!');
+        }
+
+        // Function to simulate placing an order
+        function placeOrder() {
+            alert('Your order has been placed successfully!');
+        }
+
+        // Redirect to the notebook specifications page
+        function redirectToNotebook() {
+            window.location.href = 'notebook.html';
+        }
+    </script>
+
+</body>
+</html>
